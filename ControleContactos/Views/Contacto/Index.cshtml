@@ -1,0 +1,44 @@
+﻿@model List<ContactoModel>
+@{
+    ViewData["Title"] = "Página de contacto";
+}
+<div class="text-center">
+   <div class = "d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class = "btn btn-success"  role = "button" asp-controller="Contacto" asp-action="Criar">Novo Contacto</a>
+   </div>
+    <h1 class="display-4">Página de Contacto</h1>
+    <p>Sistema de Cadastro de contacto</p>
+    <table class="table">
+        <thead>
+            <tr >
+                <th scope = "col" >#</th>
+                <th scope = "col" >Nome</th>
+                <th scope = "col" >Email</th>
+                <th scope = "col" >Celular</th>
+                <th scope = "col" ></th>
+            </tr> 
+        </thead>
+
+        <body>
+            @if(Model !=null && Model.Any())
+            {
+                foreach(ContactoModel contacto in Model)
+                {
+                    <tr>
+                        <th scope = "row1" >@contacto.Id</th>
+                        <td>@contacto.Nome</td>
+                        <td>@contacto.Email</td>
+                        <td>@contacto.Celular</td>
+                        <td>
+                            <div class = "btn-group" role = "group" arial-label = "Basic Example" >
+                                  <a role="button"  class = "btn btn-primary"  asp-action = "Editar" asp-controller = "Contacto"  asp-route-id = "@contacto.Id" >Editar</a>
+                                   <a role="button" class = "btn btn-danger" asp-action = "ApagarConfirmacao"  asp-controller = "Contacto" asp-route-id = "@contacto.Id"  >Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </body>
+    </table>
+</div>
+

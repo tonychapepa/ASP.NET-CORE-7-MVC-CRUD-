@@ -1,0 +1,43 @@
+﻿@using ControleContactos.Enum;
+@model UsuarioModel
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar Contacto</h1>
+
+</div>
+<form asp-controller="Usuario" asp-action="NewUser" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o seu nome">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Email</label>
+        <input type="text" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o seu email">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group">
+        <label for="Login">Login</label>
+        <input type="text" asp-for="Login" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o seu Login">
+        @Html.ValidationMessageFor(x =>x.Login)
+    </div>
+    <div class="form-group">
+        <label for="Perfil">Perfil</label>
+        <select asp-for = "Perfil" class="form-control">
+            <option value = "0" >Selecione</option>
+            <option value="@PerfilEnum.Admin">Administrador</option>
+            <option value="@PerfilEnum.Padrao">Padrão</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Senha">Senha</label>
+        <input type="text" asp-for="Senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o sua senha">
+        @Html.ValidationMessageFor(x =>x.Login)
+    </div>
+
+    <button type="Adicionar" class="btn btn-primary btn-block">Adicionar</button>
+    <a class="btn btn-secondary btn-block" asp-asp-controller="Usuario" asp-action="index" role="button">Voltar</a>
+</form>
+
